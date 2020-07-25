@@ -40,3 +40,8 @@ print(data.c)
 learn = cnn_learner(data, models.resnet34, metrics=error_rate)
 
 learn.fit_one_cycle(4)
+
+learn.save('stage-1')
+
+interp = ClassificationInterpretation.from_learner(learn)
+interp.plot_top_losses(9, figsize=(15,11))

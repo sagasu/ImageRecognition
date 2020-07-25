@@ -1,7 +1,6 @@
 # ImageRecognition
 
 
-
 # FastAI
 ![alt text](https://github.com/sagasu/ImageRecognition/blob/master/DogsAndCats.png?raw=true)
 
@@ -15,3 +14,17 @@ Classification of 37 different types of dogs and cats:
 | 2        | 0.375799    | 0.253844   | 0.077808   | 01:25 |
 | 3        | 0.294148    | 0.246899   | 0.074425   | 01:24 |
 
+# Dependency installation - Env creation
+I strongly recommend installing all the dependencies in a separate environment.  
+`conda create -n fastai python=3.6`  
+`conda activate fastai`  
+
+When done just run
+`conda deactivate`
+
+To list all known environments:
+`conda env list`  
+
+# Dependency installation
+`conda install pytorch torchvision cudatoolkit=10.2 -c pytorch`  
+`conda install -c fastai fastai`  
