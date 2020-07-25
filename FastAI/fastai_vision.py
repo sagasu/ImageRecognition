@@ -5,6 +5,9 @@ import matplotlib.pyplot as plt
 
 from PIL import Image
 
+
+# execute this file from run_vision_parallel!!!
+
 help(untar_data)
 
 path = untar_data(URLs.PETS)
@@ -35,3 +38,5 @@ print(data.c)
 
 # learn = create_cnn(data, models.resnet34, metrics=error_rate)
 learn = cnn_learner(data, models.resnet34, metrics=error_rate)
+
+learn.fit_one_cycle(4)
