@@ -28,3 +28,21 @@ To list all known environments:
 # Dependency installation
 `conda install pytorch torchvision cudatoolkit=10.2 -c pytorch`  
 `conda install -c fastai fastai`  
+
+# Fixing fastai for Windows
+In order to be able to display images (show_batch did not display anything) in fastai I modified code
+`~\anaconda3\Lib\site-packages\fastai\vision\data.py`  
+
+by adding `plt.show()` at the end of the `show_xys` method call  
+  
+method after modification:  
+```python
+def show_xys(self, xs, ys, imgsize:int=4, figsize:Optional[Tuple[int,int]]=None, **kwargs):
+        "Show the `xs` (inputs) and `ys` (targets) on a figure of `figsize`."
+        rows = int(np.ceil(math.sqrt(len(xs))))
+        axs = subplots(rows, rows, imgsize=imgsize, figsize=figsize)
+        for x,y,ax in zip(xs, ys, axs.flatten()): x.show(ax=ax, y=y, **kwargs)
+        for ax in axs.flatten()[len(xs):]: ax.axis('off')
+        plt.tight_layout()
+        plt.show()
+```
