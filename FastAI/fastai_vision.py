@@ -60,7 +60,8 @@ interp = ClassificationInterpretation.from_learner(learn)
 interp.plot_top_losses(9, figsize=(15,11))
 plt.show()
 
-doc(plot_top_losses)
 interp.plot_confusion_matrix(figsize=(12,12), dpi=60)
-interp.most_confused(min_val=2)
+plt.show()
 
+interp.most_confused(min_val=2)
+plt.show()
