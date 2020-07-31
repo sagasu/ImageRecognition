@@ -8,11 +8,11 @@ from PIL import Image
 
 # execute this file from run_vision_parallel!!!
 
-help(untar_data)
+# help(untar_data)
 
 path = untar_data(URLs.PETS)
-print(path)
-print(path.ls())
+# print(path)
+# print(path.ls())
 
 path_anno = path/'annotations'
 path_img = path/'images'
@@ -41,14 +41,14 @@ data.show_batch(rows=3, figsize=(7,6)) #rows=3, figsize=(7,6)
 plt.show()
 
 #plt.imshow(data)
-print(data.classes)
-print(data.c)
+# print(data.classes)
+# print(data.c)
 
 # learn = create_cnn(data, models.resnet34, metrics=error_rate)
 learn = cnn_learner(data, models.resnet34, metrics=error_rate)
 
 learn.unfreeze() #get rid of already trained model that was downloaded
-learn.fit_one_cycle(1)
+learn.fit_one_cycle(2, max_lr=slice(1e-6, 1e-4))
 
 #learn.save('stage-1')
 #learn.load('stage-1')
